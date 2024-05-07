@@ -12,7 +12,7 @@
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
-        
+        ios::sync_with_stdio(false);cin.tie(0);
         TreeNode* current = root;
         while(current != NULL){
             if(val > current->val){
