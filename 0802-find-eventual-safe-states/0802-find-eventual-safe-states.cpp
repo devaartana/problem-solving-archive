@@ -33,7 +33,7 @@ public:
                 continue;
             }
 
-            if(!visited[i]) safe[i] = dfs_recursion(graph, visited, safe, i);
+            if(!visited[i]) dfs_recursion(graph, visited, safe, i);
         }
 
         vector<int> safeNodes;
