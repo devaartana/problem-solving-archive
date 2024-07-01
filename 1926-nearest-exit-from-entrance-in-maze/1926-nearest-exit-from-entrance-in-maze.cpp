@@ -23,12 +23,11 @@ public:
             for(int i=0; i<4; i++){
                 int newRow = row + mv[i].first, newCol = col + mv[i].second;
                 
-                if((newRow == 0 || newRow == maze.size() - 1 || newCol == 0 || newCol == maze[0].size() - 1) && !(newRow == entrance[0] && newCol == entrance[1]) && newRow < maze.size() && newCol < maze[0].size() &&  maze[newRow][newCol] == '.'){
-                    return temp.second + 1;
-                }
 
                 if(isTrue(visited, maze, newRow, newCol)){
-                    cout << newRow << " " << newCol << " " << temp.second << endl;
+                    if((newRow == 0 || newRow == maze.size() - 1 || newCol == 0 || newCol == maze[0].size() - 1) && !(newRow == entrance[0] && newCol == entrance[1]) ){
+                        return temp.second + 1;
+                    }
                     q.push({{newRow, newCol}, temp.second + 1});
                     visited[newRow][newCol] = true;
                 }
