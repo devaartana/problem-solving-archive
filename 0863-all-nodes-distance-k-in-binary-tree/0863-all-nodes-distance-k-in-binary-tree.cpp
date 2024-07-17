@@ -52,13 +52,11 @@ public:
             }
         
             if(current->left && !visited[current->left]){
-                q.push({current->left, temp.second - 1});    
-                visited[current->left] = true;
+                q.push({current->left, temp.second - 1});
             }
 
             if(current->right && !visited[current->right]){
-                q.push({current->right, temp.second - 1});    
-                visited[current->right] = true;
+                q.push({current->right, temp.second - 1});
             }
         }
 
