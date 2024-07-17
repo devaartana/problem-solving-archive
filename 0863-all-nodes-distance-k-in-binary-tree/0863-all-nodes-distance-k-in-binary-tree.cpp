@@ -34,7 +34,7 @@ public:
         parent[root] = NULL;
 
         queue<pair<TreeNode*,int>> q;
-        while(current != NULL && k){
+        while(current != NULL && k >= 0){
             q.push({current, k--});
             visited[current] = true;
             current = parent[current];
