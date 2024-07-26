@@ -17,7 +17,6 @@ public:
     
     bool equationsPossible(vector<string>& equations) {
         vector<int> parent(27, 0);
-        vector<vector<bool>> relationships(27, vector<bool>(27, false));
 
         for(int i=0; i<27; i++){
             parent[i] = i;
