@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<vector<int>> al, temp_critical;
+    vector<vector<int>> al, critical_connections;
     vector<bool> visited;
     vector<int> ids, lowlinks;
     int i = 1;
@@ -19,7 +19,7 @@ public:
                 lowlinks[start] = min(lowlinks[start], lowlinks[vertex]);
 
                 if(ids[start] < lowlinks[vertex]){
-                    temp_critical.push_back({start, vertex});
+                    critical_connections.push_back({start, vertex});
                 }
             } else {
                 lowlinks[start] = min(lowlinks[start], lowlinks[vertex]);
@@ -42,6 +42,6 @@ public:
                 tarjans(i, -1);
             }
         }
-        return temp_critical;
+        return critical_connections;
     }
 };
