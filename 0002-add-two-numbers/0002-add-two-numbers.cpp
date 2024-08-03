@@ -12,24 +12,19 @@ class Solution {
 public:
     
     ListNode* recursive(ListNode* l1, ListNode* l2, bool carry) {
-        if(!l1 && !l2) {
-            if(carry) return new ListNode(carry);
-            else return nullptr;
-        }
+        if(!l1 && !l2 && !carry) return nullptr;
 
+        int sum = carry;
+        if(l1) sum += l1->val;
+        if(l2) sum += l2->val;
         
-        int sum;
-        if(l1 && l2)sum = l1->val + l2->val;
-        else if(l1) sum = l1->val;
-        else if(l2) sum = l2->val;
-        
-
-        ListNode *newNode = new ListNode((sum + carry) %10);
+        ListNode *newNode = new ListNode(sum % 10);
     
-        if(l1 && l2)newNode->next = recursive(l1->next, l2->next, sum + carry  > 9);
-        else if(l1) newNode->next = recursive(l1->next, l2, sum + carry > 9);
-        else if(l2) newNode->next = recursive(l1, l2->next, sum + carry  > 9);
+        ListNode *next1 = l1 ? l1->next : nullptr;
+        ListNode *next2 = l2 ? l2->next : nullptr;
 
+        newNode->next = recursive(next1, next2, sum / 10);
+        
         return newNode;
     }
     
