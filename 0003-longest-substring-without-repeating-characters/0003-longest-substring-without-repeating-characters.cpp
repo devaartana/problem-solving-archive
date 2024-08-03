@@ -6,7 +6,6 @@ public:
         int first_idx = 0, max_substring = 0;
         for(int i=0; i<s.length(); i++){
             if(mp[s[i]] > first_idx){
-                cout << i << " " << first_idx <<  " " << max_substring << endl;
                 max_substring = max(max_substring, i - first_idx);
                 first_idx = mp[s[i]];
             }
