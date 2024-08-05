@@ -19,11 +19,9 @@ public:
         int left  = helper(root->left);
 
         if(!right || !left) return 0;
-        
-        right++; left++;
 
         if(abs(right - left) > 1) return 0;
-        else return max(left, right);
+        else return 1 + max(left, right);
         
     }
 
