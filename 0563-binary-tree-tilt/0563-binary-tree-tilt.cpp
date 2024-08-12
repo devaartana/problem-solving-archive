@@ -18,9 +18,8 @@ public:
         int left = helper(root->left, sum);
 
         sum += abs(right - left);        
-        root->val += right + left;
 
-        return root->val;
+        return root->val + right + left;
     }
     
     int findTilt(TreeNode* root) {
