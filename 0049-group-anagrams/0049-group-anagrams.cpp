@@ -17,10 +17,6 @@ public:
             i++;
         }
 
-        for(auto data : ump) {
-            cout << data.first << endl; 
-        }
-
         return ans;
     }
 };
