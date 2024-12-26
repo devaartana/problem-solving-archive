@@ -31,6 +31,6 @@ public:
             } else st[pointer++] = stoi(token);
         }
 
-        return st[pointer - 1];
+        return st[0];
     }
 };
