@@ -14,11 +14,10 @@ public:
 
     bool helper(TreeNode* s, TreeNode* t) {
         if(!s && !t) return true;
-        else if (!s && t || s && !t) return false;
+        
+        if (!s || !t || s->val != t->val) return false;
 
-        if(s->val == t->val && helper(s->left, t->left) && helper(s->right, t->right)) return true;
-
-        return false;
+        return helper(s->left, t->left) && helper(s->right, t->right);
     }
 
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
