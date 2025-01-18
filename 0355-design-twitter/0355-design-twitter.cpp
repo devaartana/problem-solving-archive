@@ -1,26 +1,32 @@
 class Twitter {
 public:
     std::unordered_map<int, std::unordered_set<int>> following;
-    std::vector<std::pair<int, int>> tweets;
+    std::unordered_map<int, std::vector<std::pair<int, int>>> tweets;
+    int count;
 
-    Twitter() { tweets = std::vector<std::pair<int, int>>(); }
+    Twitter() { count = 0; }
 
     void postTweet(int userId, int tweetId) {
-        tweets.push_back({userId, tweetId});
+        tweets[userId].push_back({count++, tweetId});
     }
 
     std::vector<int> getNewsFeed(int userId) {
         std::vector<int> ans;
+        std::priority_queue<std::pair<int, int>> pq;
 
-        int i = tweets.size() - 1;
-        while (ans.size() < 10 && i >= 0) {
-
-            auto temp = &following[userId];
-            if (userId == tweets[i].first ||
-                temp->find(tweets[i].first) != temp->end()) {
-                ans.push_back(tweets[i].second);
+        for (int followed : following[userId]) {
+            for (auto& tweet : tweets[followed]) {
+                pq.push(tweet);
             }
-            i--;
+        }
+
+        for (auto& tweet : tweets[userId]) {
+            pq.push(tweet);
+        }
+
+        while (ans.size() < 10 && !pq.empty()) {
+            ans.push_back(pq.top().second);
+            pq.pop();
         }
 
         return ans;
