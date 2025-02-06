@@ -48,10 +48,6 @@ class WordDictionary {
             }
             node = node->child[word[i] - 'a'];
         }
-
-        if(word[i] == '.') {
-            return true;
-        }
         return node->status;
     }
 
