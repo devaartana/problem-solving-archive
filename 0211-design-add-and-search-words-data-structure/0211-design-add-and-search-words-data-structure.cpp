@@ -5,6 +5,7 @@ class WordDictionary {
         Node *child[26];
 
         Node() {
+            status = false;
             for (int i = 0; i < 26; i++) {
                 child[i] = nullptr;
             }
@@ -31,10 +32,6 @@ class WordDictionary {
     }
 
     bool helper(std::string &word, int i, Node *node) {
-        if(word.size()  - 1 == i && word[i] == '.') {
-            return true;
-        }
-
         for (; i < word.size(); i++) {
             if (word[i] == '.') {
                 for (int j = 0; j < 26; j++) {
